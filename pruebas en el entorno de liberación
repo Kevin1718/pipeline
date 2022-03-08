@@ -1,0 +1,11 @@
+withCredentials([usernameColonPassword(credentialsId: 'mylogin', variable: 'USERPASS')]) {
+    sh '''
+      set +x
+      curl -u $USERPASS https://private.server/ > output
+    '''
+}
+zip dir: '/home/workspace', glob: '', zipFile: 'TEST.zip'
+
+ws('/home/jenkins_workspace') {
+    // some block
+}
